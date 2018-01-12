@@ -3,9 +3,12 @@ const Web3 = require('web3');
 const { interface, bytecode } = require('./compile');
 
 const provider = new HDWalletProvider(
+    // account mnemonic
     'certain hungry ripple recall vehicle subway myth kitten song page repair knee',
-    'https://rinkeby.infura.io/orDImgKRzwNrVCDrAk5Q'
+    // infura url
+    'https://rinkeby.infura.io/vetUIoaE0kpbIU2N9vvn'
 );
+
 const web3 = new Web3(provider);
 
 const deploy = async () => {
@@ -17,6 +20,7 @@ const deploy = async () => {
         .deploy({ data: bytecode })
         .send({ gas: '1000000', from: accounts[0] });
 
+    console.log(interface);
     console.log('Contract deployed to', result.options.address);
 };
 deploy();
