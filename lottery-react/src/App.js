@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import web3 from './web3';
 import lottery from './lottery';
+import { Button, Field, Control, Input } from 'reactbulma';
 
 class App extends Component {
   state = {
@@ -34,17 +35,20 @@ class App extends Component {
           ether!
         </p>
         <hr />
-        <form>
-          <h4>Want to try your luck?</h4>
-          <div>
-            <label>Amount of ether to enter: </label>
-            <input
+        <h4>Want to try your luck?</h4>
+        <Field hasAddons>
+          <label>Amount of ether to enter:</label>
+          <Control>
+            <Input
+              placeholder="Amount of ether"
               value={this.state.value}
               onChange={event => this.setState({ value: event.target.value })}
             />
-          </div>
-          <button>Enter</button>
-        </form>
+          </Control>
+          <Control>
+            <Button info>Enter</Button>
+          </Control>
+        </Field>
       </div>
     );
   }
