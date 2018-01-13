@@ -8,12 +8,14 @@ class App extends Component {
     manager: '',
     players: [],
     balance: '',
+    value: '',
   };
 
   async componentDidMount() {
+    // console.log(lottery);
     const manager = await lottery.methods.manager().call();
     const players = await lottery.methods.getPlayers().call();
-    console.log(web3.eth);
+    // console.log(web3);
     const balance = await web3.eth.getBalance(lottery.options.address);
 
     this.setState({ manager, players, balance });
@@ -31,6 +33,18 @@ class App extends Component {
           competing to win {web3.utils.fromWei(this.state.balance, 'ether')}{' '}
           ether!
         </p>
+        <hr />
+        <form>
+          <h4>Want to try your luck?</h4>
+          <div>
+            <label>Amount of ether to enter: </label>
+            <input
+              value={this.state.value}
+              onChange={event => this.setState({ value: event.target.value })}
+            />
+          </div>
+          <button>Enter</button>
+        </form>
       </div>
     );
   }
