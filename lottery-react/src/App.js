@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import web3 from 'web3';
+import web3 from './web3';
 import lottery from './lottery';
 
 class App extends Component {
@@ -13,6 +13,7 @@ class App extends Component {
   async componentDidMount() {
     const manager = await lottery.methods.manager().call();
     const players = await lottery.methods.getPlayers().call();
+    console.log(web3.eth);
     const balance = await web3.eth.getBalance(lottery.options.address);
 
     this.setState({ manager, players, balance });
