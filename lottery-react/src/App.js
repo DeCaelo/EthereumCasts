@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import web3 from './web3';
 import lottery from './lottery';
-import { Button, Field, Control, Input } from 'reactbulma';
 
 class App extends Component {
   state = {
@@ -34,21 +33,18 @@ class App extends Component {
           competing to win {web3.utils.fromWei(this.state.balance, 'ether')}{' '}
           ether!
         </p>
-        <hr />
-        <h4>Want to try your luck?</h4>
-        <Field hasAddons>
-          <label>Amount of ether to enter:</label>
-          <Control>
-            <Input
-              placeholder="Amount of ether"
+        <form>
+          <h4>Want to try your luck?</h4>
+          <div className="InputAddOn">
+            <input
+              placeholder="Enter Amount of ether"
+              className="InputAddOn-field"
               value={this.state.value}
               onChange={event => this.setState({ value: event.target.value })}
             />
-          </Control>
-          <Control>
-            <Button info>Enter</Button>
-          </Control>
-        </Field>
+            <button className="InputAddOn-item">Enter</button>
+          </div>
+        </form>
       </div>
     );
   }
