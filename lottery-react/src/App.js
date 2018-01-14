@@ -37,6 +37,18 @@ class App extends Component {
     this.setState({ message: 'You have been entered!' });
   };
 
+  onClick = async event => {
+    const accounts = await web3.eth.getAccounts();
+
+    this.setState({ message: 'Waiting on transaction success ...' });
+
+    await lottery.methods.pickWinner().send({
+      from: accounts[0],
+    });
+
+    this.setState({ message: 'A winner has been picked!' });
+  };
+
   render() {
     return (
       <div className="lottery">
@@ -45,15 +57,15 @@ class App extends Component {
           This contract is managed by <span>{this.state.manager}</span>
         </p>
         <p>
-          There are currently {this.state.players.length} people entered,
-          competing to win {web3.utils.fromWei(this.state.balance, 'ether')}{' '}
-          ether!
+          There are currently <span>{this.state.players.length} people</span>{' '}
+          entered, competing to win{' '}
+          <span>{web3.utils.fromWei(this.state.balance, 'ether')} ether!</span>
         </p>
         <form onSubmit={this.onSubmit}>
           <h4>Want to try your luck?</h4>
           <div className="InputAddOn">
             <input
-              placeholder="Enter Amount of ether"
+              placeholder="Enter Amount of ether > 0.01"
               className="InputAddOn-field"
               value={this.state.value}
               onChange={event => this.setState({ value: event.target.value })}
@@ -61,6 +73,10 @@ class App extends Component {
             <button className="InputAddOn-item">Enter</button>
           </div>
         </form>
+        <h4>Ready to pick a winner?</h4>
+        <button className="InputAddOn-item" onClick={this.onClick}>
+          Click to Pick a winner!
+        </button>
         <h1>{this.state.message}</h1>
       </div>
     );

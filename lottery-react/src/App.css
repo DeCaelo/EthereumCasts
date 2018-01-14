@@ -36,7 +36,7 @@ span {
 }
 
 .InputAddOn-item {
-  background-color: rgba(147, 128, 108, 0.1);
+  background-color: var(--yellow);
   color: #666666;
   font: inherit;
   font-weight: normal;
