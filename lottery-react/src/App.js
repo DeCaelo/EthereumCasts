@@ -9,13 +9,14 @@ class App extends Component {
     players: [],
     balance: '',
     value: '',
+    message: '',
   };
 
   async componentDidMount() {
     // console.log(lottery);
     const manager = await lottery.methods.manager().call();
     const players = await lottery.methods.getPlayers().call();
-    // console.log(web3);
+    console.log(web3.eth);
     const balance = await web3.eth.getBalance(lottery.options.address);
 
     this.setState({ manager, players, balance });
@@ -25,10 +26,15 @@ class App extends Component {
     event.preventDefault();
 
     const accounts = await web3.eth.getAccounts();
+
+    this.setState({ message: 'Waiting on transaction success ...' });
+
     await lottery.methods.enter().send({
       from: accounts[0],
       value: web3.utils.toWei(this.state.value, 'ether'),
     });
+
+    this.setState({ message: 'You have been entered!' });
   };
 
   render() {
@@ -55,6 +61,7 @@ class App extends Component {
             <button className="InputAddOn-item">Enter</button>
           </div>
         </form>
+        <h1>{this.state.message}</h1>
       </div>
     );
   }
