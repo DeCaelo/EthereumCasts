@@ -1,11 +1,11 @@
 import React from 'react';
+import Header from './Header';
 
 export default props => {
   return (
     <div>
-      <h1>Im a Header</h1>
+      <Header />
       {props.children}
-      <h1>Im a Footer</h1>
     </div>
   );
 };
