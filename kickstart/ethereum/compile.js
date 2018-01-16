@@ -16,7 +16,7 @@ fs.ensureDirSync(buildPath);
 // check all contract in campaign.sol
 for (let contract in output) {
   fs.outputJsonSync(
-    path.resolve(buildPath, contract + '.json'),
+    path.resolve(buildPath, contract.replace(':', '') + '.json'),
     output[contract],
   );
 }
