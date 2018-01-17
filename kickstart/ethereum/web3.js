@@ -14,3 +14,5 @@ if (typeof window !== 'undefined' && typeof window.web3 !== 'undefined') {
 }
 
 export default web3;
+
+// https://github.com/MetaMask/faq/blob/master/detecting_metamask.md#web3-deprecation
