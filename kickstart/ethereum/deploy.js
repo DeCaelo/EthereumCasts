@@ -29,3 +29,6 @@ deploy();
 // lc@iMac-de-LC ~/Desktop/www/EthereumCasts/kickstart/ethereum (master●)$ node deploy.js                                   [2.4.2]
 // Attempting to deploy from account 0x1694F3e94a56310F68f88a25374Af51b9cf2af71
 // Contract deployed to 0x8Eb3Eb8f37Ece7aA6FEC98C97764689578611882
+
+// Redeploying CampaignFactory
+// Contract deployed to 0x998A238886d217A1e3b1Be9731Da7a62Ee38b46d
