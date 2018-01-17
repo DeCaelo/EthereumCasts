@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, Grid } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import Campaign from '../../ethereum/campaign';
+import web3 from '../../ethereum/web3';
 import ContributeForm from '../../components/ContributeForm';
 
 class CampaignShow extends Component {
@@ -57,7 +58,7 @@ class CampaignShow extends Component {
           'Number of people who have already donated to this campaign',
       },
       {
-        header: balance,
+        header: web3.utils.fromWei(balance, 'ether'),
         meta: 'Campaign Balance (ether)',
         description:
           'The balance is how much money this campaign has left to spend',
